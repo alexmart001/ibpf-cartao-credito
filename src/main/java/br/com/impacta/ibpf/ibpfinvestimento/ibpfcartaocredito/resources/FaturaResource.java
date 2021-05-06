@@ -1,5 +1,6 @@
 package br.com.impacta.ibpf.ibpfinvestimento.ibpfcartaocredito.resources;
 
+import br.com.impacta.ibpf.ibpfinvestimento.ibpfcartaocredito.dto.FaturaDTO;
 import br.com.impacta.ibpf.ibpfinvestimento.ibpfcartaocredito.entities.Fatura;
 import br.com.impacta.ibpf.ibpfinvestimento.ibpfcartaocredito.repositories.FaturaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,10 @@ public class FaturaResource {
     @Autowired
     private FaturaRepository faturaRepository;
 
-    @GetMapping
-    public ResponseEntity<Fatura> findById(@PathVariable Long id){
+    @GetMapping("/{id}")
+    public ResponseEntity<FaturaDTO> findById(@PathVariable Long id){
         Fatura fatura = faturaRepository.findById(id).get();
-        return ResponseEntity.ok(fatura);
+        FaturaDTO dto = new FaturaDTO(fatura.getNomeEmpresa(),fatura.getDataCompra(),fatura.getValor());
+        return ResponseEntity.ok(dto);
     }
 }

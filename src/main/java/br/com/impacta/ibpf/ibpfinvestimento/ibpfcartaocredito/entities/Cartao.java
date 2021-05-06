@@ -12,7 +12,10 @@ public class Cartao {
     private Long id;
 
     @Column(name = "id_conta")
-    private Long id_conta;
+    private Long idConta;
+
+    @Column(name = "numero")
+    private Long numero;
 
     @Column(name = "cvv")
     private Integer cvv;
@@ -26,6 +29,19 @@ public class Cartao {
     @OneToMany(mappedBy = "cartao")
     private List<Fatura> faturas;
 
+    public Cartao() {
+    }
+
+    public Cartao(Long id, Long idConta, Long numero, Integer cvv, Double limite, Date vencimento, List<Fatura> faturas) {
+        this.id = id;
+        this.idConta = idConta;
+        this.numero = numero;
+        this.cvv = cvv;
+        this.limite = limite;
+        this.vencimento = vencimento;
+        this.faturas = faturas;
+    }
+
     public Long getId() {
         return id;
     }
@@ -34,12 +50,12 @@ public class Cartao {
         this.id = id;
     }
 
-    public Long getId_conta() {
-        return id_conta;
+    public Long getIdConta() {
+        return idConta;
     }
 
-    public void setId_conta(Long id_conta) {
-        this.id_conta = id_conta;
+    public void setIdConta(Long idConta) {
+        this.idConta = idConta;
     }
 
     public Integer getCvv() {
@@ -74,11 +90,20 @@ public class Cartao {
         this.faturas = faturas;
     }
 
+    public Long getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Long numero) {
+        this.numero = numero;
+    }
+
     @Override
     public String toString() {
         return "Cartao{" +
                 "id=" + id +
-                ", id_conta=" + id_conta +
+                ", idConta=" + idConta +
+                ", numero=" + numero +
                 ", cvv=" + cvv +
                 ", limite=" + limite +
                 ", vencimento=" + vencimento +

@@ -10,7 +10,7 @@ public class Fatura {
     private Long id;
 
     @Column
-    private String produto;
+    private String descricao;
 
     @Column(name = "nome_empresa")
     private String nomeEmpresa;
@@ -28,9 +28,9 @@ public class Fatura {
 
     }
 
-    public Fatura(Long id, String produto, String nomeEmpresa, Date dataCompra, Double valor, Cartao cartao) {
+    public Fatura(Long id, String descricao, String nomeEmpresa, Date dataCompra, Double valor, Cartao cartao) {
         this.id = id;
-        this.produto = produto;
+        this.descricao = descricao;
         this.nomeEmpresa = nomeEmpresa;
         this.dataCompra = dataCompra;
         this.valor = valor;
@@ -45,12 +45,12 @@ public class Fatura {
         this.id = id;
     }
 
-    public String getProduto() {
-        return produto;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setProduto(String produto) {
-        this.produto = produto;
+    public void setDescricao(String produto) {
+        this.descricao = descricao;
     }
 
     public String getNomeEmpresa() {
@@ -89,7 +89,7 @@ public class Fatura {
     public String toString() {
         return "Fatura{" +
                 "id=" + id +
-                ", produto='" + produto + '\'' +
+                ", produto='" + descricao + '\'' +
                 ", nomeEmpresa='" + nomeEmpresa + '\'' +
                 ", dataCompra=" + dataCompra +
                 ", valor=" + valor +
